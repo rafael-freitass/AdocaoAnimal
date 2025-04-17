@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutY="9.0" prefHeight="61.0" prefWidth="900.0" text="Equipe Cão" AnchorPane.topAnchor="9.0">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="91.0" prefHeight="20.0" prefWidth="900.0" text="Escolha entre Cachorros ou Gatos">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ToggleButton focusTraversable="false" layoutX="280.0" layoutY="90.0" mnemonicParsing="false" prefWidth="120.0" text="Cachorros">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <toggleGroup>
+            <ToggleGroup fx:id="animais" />
+         </toggleGroup>
+      </ToggleButton>
+      <ToggleButton focusTraversable="false" layoutX="405.0" layoutY="90.0" mnemonicParsing="false" prefWidth="120.0" text="Gatos" toggleGroup="$animais">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ToggleButton>
+      <ToggleButton focusTraversable="false" layoutX="530.0" layoutY="90.0" mnemonicParsing="false" prefWidth="120.0" text="Ambos" toggleGroup="$animais">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ToggleButton>
+      <ScrollPane layoutX="25.0" layoutY="150.0" prefHeight="420.0" prefWidth="850.0">
+         <content>
+            <FlowPane alignment="CENTER" hgap="20.0" prefHeight="420.0" prefWidth="835.0" vgap="20.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="166.0" prefWidth="150.0" spacing="5.0" style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;" styleClass="1">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/dog.jpeg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <Label text="Macho" />
+                              <Label text="2 anos" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="xique xique - BA" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="30.0" top="30.0" />
+               </padding>
+            </FlowPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
