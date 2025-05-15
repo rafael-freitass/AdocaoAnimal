@@ -10,7 +10,8 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="br.edu.ifpr.controller.LoginController">
    <children>
       <Label text="Equipe Cão">
          <font>
@@ -24,12 +25,12 @@
          <children>
             <VBox alignment="CENTER" layoutX="293.0" prefHeight="200.0" prefWidth="314.0" spacing="10.0">
                <children>
-                  <TextField focusTraversable="false" promptText="Username" styleClass="1">
+                  <TextField focusTraversable="false" promptText="Username" styleClass="1" fx:id="username">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField focusTraversable="false" promptText="Senha">
+                  <TextField focusTraversable="false" promptText="Senha" fx:id="password">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -41,7 +42,8 @@
             <Insets />
          </VBox.margin>
       </AnchorPane>
-      <Button focusTraversable="false" mnemonicParsing="false" prefHeight="32.0" prefWidth="315.0" text="Registrar">
+      <Button focusTraversable="false" mnemonicParsing="false" prefHeight="32.0"
+              prefWidth="315.0" text="Registrar" onAction="#realizarLogin">
          <font>
             <Font size="16.0" />
          </font>

@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>11</java.version> <!-- ou 17 se preferir -->
+        <java.version>17</java.version> <!-- ou 17 se preferir -->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <exec.mainClass>com.seugrupo.adocaoanimais.Main</exec.mainClass>
@@ -22,12 +22,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
+            <version>19</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>${javafx.version}</version>
+            <version>19</version>
         </dependency>
 
         <!-- JPA + Hibernate -->
@@ -64,7 +64,6 @@
                 <version>3.0.0</version>
                 <configuration>
                     <mainClass>${exec.mainClass}</mainClass>
-                    <commandlineArgs></commandlineArgs>
                 </configuration>
             </plugin>
         </plugins>
