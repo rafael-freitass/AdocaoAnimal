@@ -3,6 +3,7 @@ package br.edu.ifpr.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="animais")
 public class AnimalModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

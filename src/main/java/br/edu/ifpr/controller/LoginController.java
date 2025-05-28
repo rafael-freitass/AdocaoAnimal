@@ -1,42 +1,59 @@
 package br.edu.ifpr.controller;
 
+import br.edu.ifpr.model.UsuarioModel;
+import br.edu.ifpr.service.UsuarioService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class LoginController {
+
     @FXML
     private TextField username;
 
     @FXML
     private TextField password;
 
+    private final UsuarioService usuarioService = new UsuarioService();
+
     @FXML
-    public void realizarLogin(){
-        if (username.getText().equals("admin") && password.getText().equals("admin")){
-            try {
-                // Carrega a nova tela FXML (TelaPrincipal.fxml)
-                FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/br/edu/ifpr/TelaRegistrarAnimais.fxml"));
-                Parent root = loader.load();
+    private void handleLogin() {
+        String usernameInput = username.getText();
+        String senhaInput = password.getText();
 
-                // Obtém o stage atual a partir de qualquer elemento da tela (ex: username)
-                Stage stage = (Stage) username.getScene().getWindow();
+        UsuarioModel usuario = usuarioService.login(usernameInput, senhaInput);
 
-                // Substitui o conteúdo atual pela nova tela
-                stage.setScene(new Scene(root, 900, 600));
-                stage.setTitle("Registrar Animais");
-                stage.show();
-
-            } catch (IOException e) {
-                e.printStackTrace();
+        if (usuario != null) {
+            switch (usuario.getRole()) {
+                case ADMIN:
+                    abrirTela("TelaRegistrarAbrigos.fxml");
+                    break;
+                case FUNCIONARIO:
+                    abrirTela("TelaRegistrarAnimais.fxml");
+                    break;
+                case CLIENTE:
+                    abrirTela("TelaAnimais.fxml");
+                    break;
             }
         } else {
-            System.out.println("Login inválido");
+            System.out.println("Usuário ou senha incorretos.");
+        }
+    }
+
+    private void abrirTela(String caminhoFXML) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifpr/" + caminhoFXML));
+            Parent root = loader.load();
+            Stage stage = (Stage) username.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

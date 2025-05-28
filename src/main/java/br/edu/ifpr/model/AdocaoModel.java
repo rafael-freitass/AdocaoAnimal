@@ -5,6 +5,7 @@ import java.util.Date;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="adocoes")
 public class AdocaoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

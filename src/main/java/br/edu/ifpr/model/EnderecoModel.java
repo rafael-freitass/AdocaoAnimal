@@ -3,9 +3,11 @@ package br.edu.ifpr.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="enderecos")
 public class EnderecoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_endereco")
     private int ID;
 
     @Column(nullable = false, length = 100)

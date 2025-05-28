@@ -3,6 +3,7 @@ package br.edu.ifpr.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="abrigos")
 public class AbrigoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

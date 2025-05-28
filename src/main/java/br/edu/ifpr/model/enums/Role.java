@@ -1,7 +1,7 @@
 package br.edu.ifpr.model.enums;
 
 public enum Role {
-    admin,
-    funcionario,
-    usuario
+    ADMIN,
+    FUNCIONARIO,
+    CLIENTE
 }
