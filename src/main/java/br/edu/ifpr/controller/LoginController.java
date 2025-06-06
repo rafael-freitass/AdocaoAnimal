@@ -31,7 +31,7 @@ public class LoginController {
         if (usuario != null) {
             switch (usuario.getRole()) {
                 case ADMIN:
-                    abrirTela("TelaRegistrarAbrigos.fxml");
+                    abrirTela("TelaAnimais.fxml");
                     break;
                 case FUNCIONARIO:
                     abrirTela("TelaRegistrarAnimais.fxml");
@@ -43,6 +43,11 @@ public class LoginController {
         } else {
             System.out.println("Usuário ou senha incorretos.");
         }
+    }
+
+    @FXML
+    private void handleRegisterScreen() {
+        abrirTela("TelaCadastro.fxml");
     }
 
     private void abrirTela(String caminhoFXML) {

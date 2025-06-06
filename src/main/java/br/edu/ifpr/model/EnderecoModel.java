@@ -23,5 +23,8 @@ public class EnderecoModel {
     private String cidade;
 
     @Column(nullable = false, length = 100)
+    private String estado;
+
+    @Column(nullable = false, length = 100)
     private String cep;
 }

@@ -2,11 +2,9 @@
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
     <persistence-unit name="AdocaoAnimal" transaction-type="RESOURCE_LOCAL">
         <class>br.edu.ifpr.model.UsuarioModel</class>
-        <class>br.edu.ifpr.model.AbrigoModel</class>
         <class>br.edu.ifpr.model.AnimalModel</class>
         <class>br.edu.ifpr.model.AdocaoModel</class>
-
-        <!-- outras classes aqui depois -->
+        <class>br.edu.ifpr.model.EnderecoModel</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
@@ -18,6 +16,7 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>
