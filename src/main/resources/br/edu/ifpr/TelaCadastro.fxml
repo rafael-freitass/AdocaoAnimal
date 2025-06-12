@@ -29,17 +29,17 @@
          <children>
             <VBox alignment="CENTER" layoutX="293.0" prefHeight="200.0" prefWidth="314.0" spacing="10.0">
                <children>
-                  <TextField focusTraversable="false" promptText="Nome Completo" styleClass="1">
+                  <TextField fx:id="nome" focusTraversable="false" promptText="Nome Completo" styleClass="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField focusTraversable="false" promptText="CPF">
+                  <TextField fx:id="cpf" focusTraversable="false" promptText="CPF">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField focusTraversable="false" promptText="Email">
+                  <TextField fx:id="email" focusTraversable="false" promptText="Email">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -67,7 +67,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button focusTraversable="false" mnemonicParsing="false" prefHeight="32.0" prefWidth="159.0" text="Registrar">
+                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="32.0" prefWidth="159.0" text="Registrar">
                            <font>
                               <Font size="16.0" />
                            </font>

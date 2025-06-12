@@ -5,7 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
-public class UsuarioDAO {
+public class UsuarioDAO extends JPAUtil<UsuarioModel> {
 
     public UsuarioModel buscarPorUsernameESenha(String username, String senha) {
         EntityManager em = JPAUtil.getEntityManager();
