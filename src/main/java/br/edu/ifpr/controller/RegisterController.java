@@ -59,7 +59,6 @@ public class RegisterController {
         usuario.setSenha(password.getText());
 
         usuarioService.cadastrar(usuario);
-
         System.out.println("Usuário cadastrado com sucesso!");
 
         abrirTela("TelaLogin.fxml");

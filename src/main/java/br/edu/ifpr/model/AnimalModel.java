@@ -9,7 +9,7 @@ public class AnimalModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
 
-    @Column(name = "nome_animal", nullable = false, length = 100)
+    @Column(nullable = false, length = 100)
     private String nome;
 
     @Column(nullable = false)
@@ -21,11 +21,14 @@ public class AnimalModel {
     @Column(nullable = false, length = 1)
     private char sexo;
 
-    @Column(nullable = false, length = 200)
-    private String vacina;
+    @ManyToOne
+    @JoinColumn(name = "id_vacina")
+    private VacinaModel vacina;
 
-    @Column(length = 200)
-    private String doenca;
+    @ManyToOne
+    @JoinColumn(name = "id_doenca")
+    private DoencaModel doenca;
+
 
     @Column(nullable = false)
     private boolean disponivelAdocao = true;
@@ -80,22 +83,6 @@ public class AnimalModel {
         this.sexo = sexo;
     }
 
-    public String getVacina() {
-        return vacina;
-    }
-
-    public void setVacina(String vacina) {
-        this.vacina = vacina;
-    }
-
-    public String getDoenca() {
-        return doenca;
-    }
-
-    public void setDoenca(String doenca) {
-        this.doenca = doenca;
-    }
-
     public boolean isDisponivelAdocao() {
         return disponivelAdocao;
     }
@@ -126,5 +113,22 @@ public class AnimalModel {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+
+    public VacinaModel getVacina() {
+        return vacina;
+    }
+
+    public void setVacina(VacinaModel vacina) {
+        this.vacina = vacina;
+    }
+
+    public DoencaModel getDoenca() {
+        return doenca;
+    }
+
+    public void setDoenca(DoencaModel doenca) {
+        this.doenca = doenca;
     }
 }

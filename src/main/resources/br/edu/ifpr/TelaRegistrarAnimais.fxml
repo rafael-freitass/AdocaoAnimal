@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -16,62 +18,105 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpr.controller.CadastroAnimalController">
    <children>
-      <Text layoutX="285.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adoção de Animais">
+      <Text layoutX="285.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Animal">
          <font>
             <Font size="48.0" />
          </font>
       </Text>
-      <VBox layoutX="14.0" layoutY="157.0" prefHeight="280.0" prefWidth="149.0" spacing="25.0">
+      <HBox alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <TextField prefHeight="0.0" prefWidth="149.0" text="Nome">
-               <VBox.margin>
+            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout" prefHeight="10.0" prefWidth="80.0" text="Sair">
+               <HBox.margin>
                   <Insets />
-               </VBox.margin>
-            </TextField>
-            <TextField text="Idade" />
-            <TextField text="Raça" />
-            <TextField text="Sexo" />
-            <Accordion>
-              <panes>
-                <TitledPane animated="false" text="Disponibilidade" />
-              </panes>
-            </Accordion>
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="80.0" text="Adoção">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
          </children>
-      </VBox>
-      <Text layoutX="242.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <TextArea layoutX="186.0" layoutY="178.0" prefHeight="238.0" prefWidth="176.0" />
-      <Text layoutX="482.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacinas">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="472.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doenças">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <TextArea layoutX="401.0" layoutY="178.0" prefHeight="90.0" prefWidth="200.0" />
-      <TextArea layoutX="401.0" layoutY="326.0" prefHeight="90.0" prefWidth="200.0" />
-      <Text layoutX="744.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Foto">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Button fx:id="btnLogout" layoutX="22.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="10.0" prefWidth="80.0" text="Sair" />
-      <StackPane layoutX="662.0" layoutY="193.0" prefHeight="150.0" prefWidth="200.0">
+      </HBox>
+      <HBox layoutX="30.0" layoutY="160.0" prefHeight="281.0" prefWidth="828.0" spacing="80.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" />
-            <Label opacity="0.36" text="Foto do animal" />
+            <VBox prefHeight="280.0" prefWidth="149.0" spacing="25.0">
+               <children>
+                  <TextField fx:id="nome" prefHeight="0.0" prefWidth="149.0" promptText="Nome">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="idade" promptText="Idade" />
+                  <TextField fx:id="raca" promptText="Raça" />
+                  <ComboBox fx:id="sexo" prefWidth="149.0" promptText="Sexo">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="M" />
+                           <String fx:value="F" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <ComboBox fx:id="disponivel" prefWidth="149.0" promptText="Disponível?">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Sim" />
+                           <String fx:value="Não" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <ComboBox fx:id="castrado" prefWidth="149.0" promptText="Castrado?">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Sim" />
+                           <String fx:value="Não" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="128.0" prefWidth="155.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="148.0" text="Descrição">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="descricao" prefHeight="115.0" prefWidth="155.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <VBox fx:id="doencas" spacing="5.0" prefWidth="149.0">
+                     <Label text="Doenças" />
+
+                  </VBox>
+
+                  <VBox fx:id="vacinas" spacing="5.0" prefWidth="149.0">
+                     <Label text="Vacinas" />
+
+                  </VBox>
+
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="178.0" text="Foto do Animal">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Label opacity="0.36" text="Foto do animal" />
+                        <ImageView fitHeight="150.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </StackPane>
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="180.0" text="Carregar" />
+               </children>
+            </VBox>
          </children>
-      </StackPane>
-      <Button layoutX="784.0" layoutY="390.0" mnemonicParsing="false" text="Salvar" />
-      <Button layoutX="106.0" layoutY="15.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="80.0" text="Adoção" />
-      <Button layoutX="696.0" layoutY="390.0" mnemonicParsing="false" text="Carregar" />
-      <Button layoutX="395.0" layoutY="507.0" mnemonicParsing="false" text="Registrar Animal">
+      </HBox>
+      <Button layoutX="395.0" layoutY="507.0" onAction="#registrarAnimal" mnemonicParsing="false" text="Registrar Animal">
          <font>
             <Font size="17.0" />
          </font>

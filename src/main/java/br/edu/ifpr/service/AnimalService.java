@@ -5,10 +5,11 @@ import br.edu.ifpr.model.AnimalModel;
 import java.util.List;
 
 public class AnimalService {
-    private final AnimalDAO animalDAO = new AnimalDAO();
+
+    private AnimalDAO animalDAO = new AnimalDAO();
 
     public void cadastrarAnimal(AnimalModel animal) {
-        // Validações básicas
+
         if (animal.getNome() == null || animal.getNome().trim().isEmpty()) {
             throw new IllegalArgumentException("Nome do animal é obrigatório");
         }
@@ -38,22 +39,6 @@ public class AnimalService {
             throw new IllegalArgumentException("Animal não encontrado");
         }
         animalDAO.excluir(id);
-    }
-
-    public AnimalModel buscarPorId(int id) {
-        return animalDAO.buscarPorId(id);
-    }
-
-    public List<AnimalModel> listarTodos() {
-        return animalDAO.buscarTodos();
-    }
-
-    public List<AnimalModel> listarDisponiveis() {
-        return animalDAO.buscarDisponiveis();
-    }
-
-    public List<AnimalModel> buscarPorTipo(String tipo) {
-        return animalDAO.buscarPorTipo(tipo);
     }
 
     public void marcarComoAdotado(int idAnimal) {

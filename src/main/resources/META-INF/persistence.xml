@@ -4,7 +4,8 @@
         <class>br.edu.ifpr.model.UsuarioModel</class>
         <class>br.edu.ifpr.model.AnimalModel</class>
         <class>br.edu.ifpr.model.AdocaoModel</class>
-        <class>br.edu.ifpr.model.EnderecoModel</class>
+        <class>br.edu.ifpr.model.VacinaModel</class>
+        <class>br.edu.ifpr.model.DoencaModel</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />

@@ -26,23 +26,11 @@ public class UsuarioModel {
     @Column(nullable = false)
     private String senha;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco")
-    private EnderecoModel endereco;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "id_role", nullable = false)
     private Role role;
 
     // Getters e Setters
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -81,14 +69,6 @@ public class UsuarioModel {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public EnderecoModel getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(EnderecoModel endereco) {
-        this.endereco = endereco;
     }
 
     public Role getRole() {
