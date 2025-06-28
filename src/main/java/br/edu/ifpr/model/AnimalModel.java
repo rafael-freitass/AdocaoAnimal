@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class AnimalModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_animal")
     private int ID;
 
     @Column(nullable = false, length = 100)

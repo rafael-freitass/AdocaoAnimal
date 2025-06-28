@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:controller="br.edu.ifpr.controller.AnimalCardController"
+      alignment="CENTER"
+      spacing="5.0"
+      prefWidth="150.0"
+      prefHeight="200.0"
+      maxWidth="150.0"
+      style="-fx-background-color: #f5f5f5; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 5px;"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1">
+    <ImageView fx:id="imgAnimal" fitHeight="109.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true" />
+    <HBox alignment="CENTER" spacing="5.0">
+        <children>
+            <Label fx:id="lblNome" text="Nome do Animal" />
+            <Label fx:id="lblRaca" text="Raça" />
+        </children>
+    </HBox>
+    <Button fx:id="btnAdotar" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Adotar">
+        <VBox.margin>
+            <Insets bottom="5.0" />
+        </VBox.margin>
+    </Button>
+</VBox>

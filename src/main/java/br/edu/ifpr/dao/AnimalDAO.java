@@ -73,13 +73,11 @@ public class AnimalDAO {
         }
     }
 
-    public List<AnimalModel> buscarDisponiveis() {
+    public static List<AnimalModel> buscarDisponiveis() {
         EntityManager em = JPAUtil.getEntityManager();
         try {
-            TypedQuery<AnimalModel> query = em.createQuery(
-                    "SELECT a FROM AnimalModel a WHERE a.disponivelAdocao = true ORDER BY a.nome",
-                    AnimalModel.class);
-            return query.getResultList();
+            return em.createQuery("SELECT a FROM AnimalModel a WHERE a.disponivelAdocao = true", AnimalModel.class)
+                    .getResultList();
         } finally {
             em.close();
         }
