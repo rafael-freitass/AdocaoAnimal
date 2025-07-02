@@ -31,10 +31,10 @@ public class LoginController {
         if (usuario != null) {
             switch (usuario.getRole()) {
                 case ADMIN:
-                    abrirTela("TelaAnimais.fxml");
+                    abrirTela("TelaSelecionarRegistro.fxml");
                     break;
                 case FUNCIONARIO:
-                    abrirTela("TelaRegistrarAnimais.fxml");
+                    abrirTela("TelaSelecionarRegistro.fxml");
                     break;
                 case CLIENTE:
                     abrirTela("TelaAnimais.fxml");
