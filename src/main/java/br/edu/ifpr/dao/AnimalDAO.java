@@ -83,16 +83,5 @@ public class AnimalDAO {
         }
     }
 
-    public List<AnimalModel> buscarPorTipo(String tipo) {
-        EntityManager em = JPAUtil.getEntityManager();
-        try {
-            TypedQuery<AnimalModel> query = em.createQuery(
-                    "SELECT a FROM AnimalModel a WHERE a.disponivelAdocao = true AND LOWER(a.raca) LIKE LOWER(:tipo) ORDER BY a.nome",
-                    AnimalModel.class);
-            query.setParameter("tipo", "%" + tipo + "%");
-            return query.getResultList();
-        } finally {
-            em.close();
-        }
-    }
+
 }

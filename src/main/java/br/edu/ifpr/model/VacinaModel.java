@@ -13,6 +13,11 @@ public class VacinaModel {
     @Column(nullable = false)
     private String nome;
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
     // Getters e Setters
     public Long getId_vacina() {
         return id_vacina;

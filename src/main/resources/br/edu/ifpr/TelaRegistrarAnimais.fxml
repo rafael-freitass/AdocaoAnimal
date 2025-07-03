@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,84 +18,143 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpr.controller.CadastroAnimalController">
    <children>
-      <Text layoutX="285.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Animal">
+      <Text layoutX="280.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Animal">
          <font>
-            <Font size="48.0" />
+            <Font size="40.0" />
          </font>
       </Text>
-      <HBox alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <HBox layoutX="14.0" layoutY="14.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout" prefHeight="10.0" prefWidth="80.0" text="Voltar">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="80.0" text="Adoção">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
          </children>
       </HBox>
-      <HBox layoutX="30.0" layoutY="160.0" prefHeight="281.0" prefWidth="828.0" spacing="80.0">
+      <HBox layoutX="14.0" layoutY="75.0" prefHeight="389.0" prefWidth="872.0" spacing="80.0">
          <children>
             <VBox prefHeight="280.0" prefWidth="149.0" spacing="25.0">
                <children>
-                  <TextField fx:id="nome" prefHeight="0.0" prefWidth="149.0" promptText="Nome">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="idade" promptText="Idade" />
-                  <TextField fx:id="raca" promptText="Raça" />
-                  <ComboBox fx:id="sexo" prefWidth="149.0" promptText="Sexo">
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="M" />
-                           <String fx:value="F" />
-                        </FXCollections>
-                     </items>
-                  </ComboBox>
-                  <ComboBox fx:id="disponivel" prefWidth="149.0" promptText="Disponível?">
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="Sim" />
-                           <String fx:value="Não" />
-                        </FXCollections>
-                     </items>
-                  </ComboBox>
-                  <ComboBox fx:id="castrado" prefWidth="149.0" promptText="Castrado?">
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="Sim" />
-                           <String fx:value="Não" />
-                        </FXCollections>
-                     </items>
-                  </ComboBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Nome:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nome" prefHeight="0.0" prefWidth="149.0" promptText="Nome">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Idade:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="idade" promptText="Idade" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Raça:">
+                        <font>
+                           <Font name="System Bold" size="13.0" />
+                        </font>
+                     </Label>
+                        <TextField fx:id="raca" promptText="Raça" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Sexo:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="sexo" prefWidth="149.0" promptText="Sexo">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="M" />
+                                 <String fx:value="F" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Disponivel:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="disponivel" prefWidth="149.0" promptText="Disponível?">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Sim" />
+                                 <String fx:value="Não" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Castrado:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="castrado" prefWidth="149.0" promptText="Castrado?">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Sim" />
+                                 <String fx:value="Não" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                     </children>
+                  </VBox>
                </children>
             </VBox>
-            <VBox prefHeight="128.0" prefWidth="155.0">
+            <VBox prefHeight="281.0" prefWidth="143.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="148.0" text="Descrição">
+                  <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="148.0" text="Descrição:">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="descricao" prefHeight="115.0" prefWidth="155.0" />
+                  <TextField fx:id="descricao" prefHeight="115.0" prefWidth="153.0" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+            <VBox prefHeight="281.0" prefWidth="199.0" spacing="20.0">
                <children>
-                  <VBox fx:id="doencas" prefWidth="149.0" spacing="5.0">
-                     <Label text="Doenças" />
-
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Doença:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="listaDoencas" prefWidth="129.0" />
+                     </children>
                   </VBox>
-
-                  <VBox fx:id="vacinas" prefWidth="149.0" spacing="5.0">
-                     <Label text="Vacinas" />
-
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Vacina:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="listaVacinas" prefWidth="149.0" />
+                     </children>
                   </VBox>
-
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -115,7 +175,7 @@
             </VBox>
          </children>
       </HBox>
-      <Button layoutX="395.0" layoutY="507.0" mnemonicParsing="false" onAction="#registrarAnimal" text="Registrar Animal">
+      <Button layoutX="402.0" layoutY="533.0" mnemonicParsing="false" onAction="#registrarAnimal" text="Registrar Animal">
          <font>
             <Font size="17.0" />
          </font>

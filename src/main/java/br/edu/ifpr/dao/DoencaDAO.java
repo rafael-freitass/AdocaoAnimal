@@ -5,6 +5,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.util.List;
+
 public class DoencaDAO {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdocaoAnimal");
@@ -15,5 +17,12 @@ public class DoencaDAO {
         em.persist(doenca);
         em.getTransaction().commit();
         em.close();
+    }
+
+    public List<DoencaModel> listarTodas() {
+        EntityManager em = emf.createEntityManager();
+        List<DoencaModel> doencas = em.createQuery("FROM DoencaModel", DoencaModel.class).getResultList();
+        em.close();
+        return doencas;
     }
 }

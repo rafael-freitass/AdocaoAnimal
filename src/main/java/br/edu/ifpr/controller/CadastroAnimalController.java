@@ -1,7 +1,13 @@
 package br.edu.ifpr.controller;
 
+import br.edu.ifpr.dao.DoencaDAO;
+import br.edu.ifpr.dao.VacinaDAO;
 import br.edu.ifpr.model.AnimalModel;
+import br.edu.ifpr.model.DoencaModel;
+import br.edu.ifpr.model.VacinaModel;
 import br.edu.ifpr.service.AnimalService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,10 +21,9 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CadastroAnimalController {
-    private AnimalService animalService = new AnimalService();
-
     @FXML private Button btnLogout;
     @FXML private TextField nome;
     @FXML private TextField idade;
@@ -29,7 +34,13 @@ public class CadastroAnimalController {
     @FXML private TextField descricao;
     @FXML private Button btnCarregar;
     @FXML private ImageView imgPreview;
+    @FXML private ListView<DoencaModel> listaDoencas;
+    @FXML private ListView<VacinaModel> listaVacinas;
     private String caminhoImagemRelativo = null;
+
+    private AnimalService animalService = new AnimalService();
+    private DoencaDAO doencaDAO = new DoencaDAO();
+    private VacinaDAO vacinaDAO = new VacinaDAO();
 
     @FXML private void handleLogout() {
         abrirTela("TelaSelecionarRegistro.fxml");
@@ -88,8 +99,7 @@ public class CadastroAnimalController {
     }
 
 
-    @FXML
-    public void registrarAnimal() {
+    @FXML public void registrarAnimal() {
         try {
             AnimalModel animal = new AnimalModel();
 
@@ -115,8 +125,11 @@ public class CadastroAnimalController {
                 animal.setFoto(caminhoImagemRelativo);
             }
 
-            animalService.cadastrarAnimal(animal);
+            animal.setVacina(new ArrayList<>(listaVacinas.getSelectionModel().getSelectedItems()));
+            animal.setDoenca(new ArrayList<>(listaDoencas.getSelectionModel().getSelectedItems()));
 
+
+            animalService.cadastrarAnimal(animal);
 
             System.out.println("Animal cadastrado com sucesso!");
 
@@ -130,4 +143,17 @@ public class CadastroAnimalController {
             e.printStackTrace();
         }
     }
+
+    @FXML private void initialize() {
+        listaDoencas.setItems(FXCollections.observableArrayList(doencaDAO.listarTodas()));
+        listaVacinas.setItems(FXCollections.observableArrayList(vacinaDAO.listarTodas()));
+
+        listaDoencas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        listaVacinas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        ObservableList<DoencaModel> doencasSelecionadas = listaDoencas.getSelectionModel().getSelectedItems();
+        ObservableList<VacinaModel> vacinasSelecionadas = listaVacinas.getSelectionModel().getSelectedItems();
+    }
+
+
 }

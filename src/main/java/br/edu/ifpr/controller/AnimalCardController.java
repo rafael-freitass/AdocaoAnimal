@@ -22,15 +22,17 @@ public class AnimalCardController {
 
         String caminhoImagem = animal.getFoto();
 
-        File arquivoImagem = Paths.get(caminhoImagem).toAbsolutePath().toFile();
+        if (caminhoImagem != null && !caminhoImagem.isBlank()) {
+            File arquivoImagem = Paths.get(caminhoImagem).toAbsolutePath().toFile();
 
-        System.out.println("Procurando imagem em: " + arquivoImagem.getAbsolutePath());
-        if (arquivoImagem.exists()) {
-            Image imagem = new Image(arquivoImagem.toURI().toString());
-            imgAnimal.setImage(imagem);
+            System.out.println("Procurando imagem em: " + arquivoImagem.getAbsolutePath());
+            if (arquivoImagem.exists()) {
+                imgAnimal.setImage(new Image(arquivoImagem.toURI().toString()));
+            } else {
+                System.out.println("Imagem não encontrada: " + arquivoImagem.getAbsolutePath());
+            }
         } else {
-            System.out.println("Imagem não encontrada: " + caminhoImagem);
-
+            System.out.println("Animal sem foto cadastrada");
         }
 
         btnAdotar.setOnAction(e -> {

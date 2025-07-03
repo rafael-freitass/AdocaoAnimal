@@ -2,6 +2,8 @@ package br.edu.ifpr.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="animais")
 public class AnimalModel {
@@ -22,13 +24,21 @@ public class AnimalModel {
     @Column(nullable = false, length = 1)
     private char sexo;
 
-    @ManyToOne
-    @JoinColumn(name = "id_vacina")
-    private VacinaModel vacina;
+    @ManyToMany(cascade = {CascadeType.MERGE})
+    @JoinTable(
+            name = "animal_vacina",
+            joinColumns = @JoinColumn(name = "id_animal"),
+            inverseJoinColumns = @JoinColumn(name = "id_vacina")
+    )
+    private List<VacinaModel> vacina;
 
-    @ManyToOne
-    @JoinColumn(name = "id_doenca")
-    private DoencaModel doenca;
+    @ManyToMany(cascade = {CascadeType.MERGE})
+    @JoinTable(
+            name = "animal_doenca",
+            joinColumns = @JoinColumn(name = "id_animal"),
+            inverseJoinColumns = @JoinColumn(name = "id_doenca")
+    )
+    private List<DoencaModel> doenca;
 
 
     @Column(nullable = false)
@@ -117,19 +127,19 @@ public class AnimalModel {
     }
 
 
-    public VacinaModel getVacina() {
+    public List<VacinaModel> getVacina() {
         return vacina;
     }
 
-    public void setVacina(VacinaModel vacina) {
+    public void setVacina(List<VacinaModel> vacina) {
         this.vacina = vacina;
     }
 
-    public DoencaModel getDoenca() {
+    public List<DoencaModel> getDoenca() {
         return doenca;
     }
 
-    public void setDoenca(DoencaModel doenca) {
+    public void setDoenca(List<DoencaModel> doenca) {
         this.doenca = doenca;
     }
 }
