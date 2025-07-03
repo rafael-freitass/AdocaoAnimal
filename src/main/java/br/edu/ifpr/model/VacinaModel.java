@@ -3,7 +3,7 @@ package br.edu.ifpr.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "vacina")
+@Table(name = "vacinas")
 public class VacinaModel {
 
     @Id

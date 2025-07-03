@@ -7,36 +7,40 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpr.controller.TelaSelecaoController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpr.controller.TelaSelecaoController">
    <children>
-      <VBox alignment="CENTER" layoutY="-1.0" prefHeight="406.0" prefWidth="600.0" spacing="30.0">
+      <VBox fx:id="rootVbox" alignment="CENTER" layoutY="-1.0" prefHeight="600.0" prefWidth="900.0" spacing="30.0">
          <children>
-            <Label text="O que deseja Registrar?">
+            <Label text="O que deseja fazer?">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="158.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#chamarTelaRegistroAnimal" text="Animal">
+                  <Button mnemonicParsing="false" onAction="#chamarTelaRegistroAnimal" text="Registrar Animal">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#chamarTelaRegistroVacina" text="Vacina">
+                  <Button mnemonicParsing="false" onAction="#chamarTelaRegistroVacina" text="Registrar Vacina">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#chamarTelaRegistroDoenca" text="Doença">
+                  <Button mnemonicParsing="false" onAction="#chamarTelaRegistroDoenca" text="Registrar Doença">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Gerenciar Usuarios">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-            <Button alignment="CENTER" mnemonicParsing="false" text="Voltar">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogout" text="Sair">
                <font>
                   <Font size="15.0" />
                </font>

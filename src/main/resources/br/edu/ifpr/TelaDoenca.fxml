@@ -8,10 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpr.controller.CadastroDoencaController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpr.controller.CadastroDoencaController">
    <children>
-      <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+      <VBox fx:id="VboxRoot" alignment="CENTER" prefHeight="600.0" prefWidth="902.0">
          <children>
             <Label alignment="CENTER" prefHeight="29.0" prefWidth="602.0" text="Registre uma Doença:">
                <font>
@@ -25,14 +24,23 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TextField promptText="nome da doença" />
+                  <TextField fx:id="nomeDoenca" promptText="nome da doença" />
                </children>
             </HBox>
-            <Button alignment="CENTER" mnemonicParsing="false" text="Voltar">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#cadastrarDoenca" text="Registrar">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>

@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -17,34 +19,61 @@ import java.io.IOException;
 public class CadastroAnimalController {
     private AnimalService animalService = new AnimalService();
 
-    @FXML
-    private Button btnLogout;
+    @FXML private Button btnLogout;
+    @FXML private TextField nome;
+    @FXML private TextField idade;
+    @FXML private TextField raca;
+    @FXML private ComboBox sexo;
+    @FXML private ComboBox disponivel;
+    @FXML private ComboBox castrado;
+    @FXML private TextField descricao;
+    @FXML private Button btnCarregar;
+    @FXML private ImageView imgPreview;
+    private String caminhoImagemRelativo = null;
 
-    @FXML
-    private TextField nome;
-
-    @FXML
-    private TextField idade;
-
-    @FXML
-    private TextField raca;
-
-    @FXML
-    private ComboBox sexo;
-
-    @FXML
-    private ComboBox disponivel;
-
-    @FXML
-    private ComboBox castrado;
-
-    @FXML
-    private TextField descricao;
-
-    @FXML
-    private void handleLogout() {
-        abrirTela("TelaLogin.fxml");
+    @FXML private void handleLogout() {
+        abrirTela("TelaSelecionarRegistro.fxml");
     }
+
+
+    @FXML private void carregarImagem(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Selecionar imagem do animal");
+
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Imagens", "*.png", "*.jpg", "*.jpeg")
+        );
+
+        File arquivoSelecionado = fileChooser.showOpenDialog(btnCarregar.getScene().getWindow());
+
+        if (arquivoSelecionado != null){
+            try {
+                File pastaDestino = new File("imagens/animais");
+                if (!pastaDestino.exists()) {
+                    pastaDestino.mkdirs();
+                }
+
+                String nomeArquivo = arquivoSelecionado.getName();
+                File destino = new File(pastaDestino, nomeArquivo);
+
+                java.nio.file.Files.copy(
+                        arquivoSelecionado.toPath(),
+                        destino.toPath(),
+                        java.nio.file.StandardCopyOption.REPLACE_EXISTING
+                );
+
+                caminhoImagemRelativo = "imagens/animais/" + nomeArquivo;
+
+                imgPreview.setImage(new Image(destino.toURI().toString()));
+
+                System.out.println("Imagem carregada e copiada para: " + caminhoImagemRelativo);
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     private void abrirTela(String caminhoFXML) {
         try {
@@ -57,6 +86,7 @@ public class CadastroAnimalController {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     public void registrarAnimal() {
@@ -81,10 +111,14 @@ public class CadastroAnimalController {
 
             animal.setDescricao(descricao.getText());
 
-            animalService.cadastrarAnimal(animal);
-            System.out.println("Animal cadastrado com sucesso!");
+            if (caminhoImagemRelativo != null) {
+                animal.setFoto(caminhoImagemRelativo);
+            }
 
-            abrirTela("TelaLogin.fxml");
+            animalService.cadastrarAnimal(animal);
+
+
+            System.out.println("Animal cadastrado com sucesso!");
 
         } catch (IllegalArgumentException e) {
 
