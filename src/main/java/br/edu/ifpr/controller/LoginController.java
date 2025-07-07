@@ -12,41 +12,53 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
-
-    @FXML
-    private TextField username;
-
-    @FXML
-    private TextField password;
+    @FXML private TextField username;
+    @FXML private TextField password;
 
     private final UsuarioService usuarioService = new UsuarioService();
 
-    @FXML
-    private void handleLogin() {
+    @FXML private void handleLogin() {
         String usernameInput = username.getText();
         String senhaInput = password.getText();
 
         UsuarioModel usuario = usuarioService.login(usernameInput, senhaInput);
 
-        if (usuario != null) {
+        if (usuario == null) {
+            System.out.println("Usuário ou senha incorretos.");
+            return;
+        }
+
+        try {
+            FXMLLoader loader;
+            Parent root;
+
             switch (usuario.getRole()) {
                 case ADMIN:
-                    abrirTela("TelaSelecionarRegistro.fxml");
-                    break;
                 case FUNCIONARIO:
-                    abrirTela("TelaSelecionarRegistro.fxml");
+                    loader = new FXMLLoader(getClass().getResource("/br/edu/ifpr/TelaSelecionarRegistro.fxml"));
+                    root = loader.load();
                     break;
+
                 case CLIENTE:
-                    abrirTela("TelaAnimais.fxml");
+                default:
+                    loader = new FXMLLoader(getClass().getResource("/br/edu/ifpr/TelaAnimais.fxml"));
+                    root = loader.load();
+
+                    TelaPrincipalController tp = loader.getController();
+                    tp.setUsuarioLogado(usuario);
                     break;
             }
-        } else {
-            System.out.println("Usuário ou senha incorretos.");
+
+            Stage stage = (Stage) username.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    @FXML
-    private void handleRegisterScreen() {
+    @FXML private void handleRegisterScreen() {
         abrirTela("TelaCadastro.fxml");
     }
 

@@ -1,6 +1,7 @@
 package br.edu.ifpr.controller;
 
 import br.edu.ifpr.model.AnimalModel;
+import br.edu.ifpr.model.UsuarioModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +22,7 @@ public class AnimalCardController {
     @FXML private Label lblRaca;
     @FXML private Button btnAdotar;
     private AnimalModel animal;
+    private UsuarioModel usuarioLogado;
 
     public void setAnimal(AnimalModel animal) {
         this.animal = animal;
@@ -42,6 +44,9 @@ public class AnimalCardController {
             System.out.println("Animal sem foto cadastrada");
         }
     }
+    public void setUsuarioLogado(UsuarioModel usuario) {
+        this.usuarioLogado = usuario;
+    }
 
     @FXML
     private void handleTelaAdotar() {
@@ -55,6 +60,7 @@ public class AnimalCardController {
 
             AnimalInfoController infoController = loader.getController();
             infoController.setAnimalAdocao(animal);
+            infoController.setUsuarioLogado(usuarioLogado);
 
             Stage stage = (Stage) btnAdotar.getScene().getWindow();
             stage.setScene(new Scene(root));

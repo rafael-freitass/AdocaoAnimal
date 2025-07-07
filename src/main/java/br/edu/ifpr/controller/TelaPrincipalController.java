@@ -2,6 +2,7 @@ package br.edu.ifpr.controller;
 
 import br.edu.ifpr.dao.AnimalDAO;
 import br.edu.ifpr.model.AnimalModel;
+import br.edu.ifpr.model.UsuarioModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,15 +15,39 @@ import java.io.IOException;
 import java.util.List;
 
 public class TelaPrincipalController {
-    @FXML
-    private Button btnLogout;
+    @FXML private Button btnLogout;
+    @FXML private FlowPane paneAnimais;
 
-    @FXML
-    private FlowPane paneAnimais;
+    private UsuarioModel usuarioLogado;
 
+    public void setUsuarioLogado(UsuarioModel usuario) {
+        this.usuarioLogado = usuario;
+        carregarAnimais();
+    }
 
-    @FXML
-    private void handleLogout() {
+    private void carregarAnimais() {
+        paneAnimais.getChildren().clear();
+
+        List<AnimalModel> animaisDisponiveis = AnimalDAO.buscarDisponiveis();
+        for (AnimalModel animal : animaisDisponiveis) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifpr/AnimalCard.fxml"));
+                Parent card = loader.load();
+
+                AnimalCardController cardCtrl = loader.getController();
+                cardCtrl.setAnimal(animal);
+                cardCtrl.setUsuarioLogado(usuarioLogado);   // <<<<<< passa adiante
+
+                paneAnimais.getChildren().add(card);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        paneAnimais.setPrefWrapLength(800);
+    }
+
+    @FXML private void handleLogout() {
         abrirTela("TelaLogin.fxml");
     }
 
@@ -36,24 +61,5 @@ public class TelaPrincipalController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void initialize() {
-        List<AnimalModel> animaisDisponiveis = AnimalDAO.buscarDisponiveis();
-
-        for (AnimalModel animal : animaisDisponiveis) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifpr/AnimalCard.fxml"));
-                Parent card = loader.load();
-                AnimalCardController controller = loader.getController();
-                controller.setAnimal(animal);
-                paneAnimais.getChildren().add(card);
-
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        paneAnimais.setPrefWrapLength(800);
     }
 }

@@ -1,6 +1,9 @@
 package br.edu.ifpr.controller;
 
 import br.edu.ifpr.model.AnimalModel;
+import br.edu.ifpr.dao.AdocaoDAO;
+import br.edu.ifpr.model.UsuarioModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +25,13 @@ public class AnimalInfoController {
     @FXML private ImageView imgAnimal;
     @FXML private Button btnAdotar;
 
+    private AnimalModel animal;
+    private UsuarioModel usuarioLogado;
+    private final AdocaoDAO adocaoDAO = new AdocaoDAO();
+
     public void setAnimalAdocao(AnimalModel animal) {
+        this.animal = animal;
+
         lblNome.setText(animal.getNome());
         lblRaca.setText(animal.getRaca());
         lbldescricao.setText(animal.getDescricao());
@@ -41,7 +50,20 @@ public class AnimalInfoController {
         } else {
             System.out.println("Animal sem foto cadastrada");
         }
+    }
 
+    public void setUsuarioLogado(UsuarioModel usuario) {
+        this.usuarioLogado = usuario;
+    }
+
+    @FXML
+    public void handleAdocao(ActionEvent event){
+        try {
+            adocaoDAO.realizarAdocao(animal, usuarioLogado);
+            abrirTela("TelaAnimais.fxml");
+        } catch (Exception e) {
+            System.out.println("Falha ao registrar adoção:\n" + e.getMessage());
+        }
     }
 
     @FXML
@@ -53,6 +75,10 @@ public class AnimalInfoController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifpr/" + caminhoFXML));
             Parent root = loader.load();
+
+            TelaPrincipalController controller = loader.getController();
+            controller.setUsuarioLogado(usuarioLogado);
+
             Stage stage = (Stage) btnAdotar.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
