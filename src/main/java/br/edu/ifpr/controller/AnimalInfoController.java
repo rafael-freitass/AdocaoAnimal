@@ -15,17 +15,17 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-public class AnimalCardController {
-    @FXML private ImageView imgAnimal;
+public class AnimalInfoController {
     @FXML private Label lblNome;
     @FXML private Label lblRaca;
+    @FXML private Label lbldescricao;
+    @FXML private ImageView imgAnimal;
     @FXML private Button btnAdotar;
-    private AnimalModel animal;
 
-    public void setAnimal(AnimalModel animal) {
-        this.animal = animal;
+    public void setAnimalAdocao(AnimalModel animal) {
         lblNome.setText(animal.getNome());
         lblRaca.setText(animal.getRaca());
+        lbldescricao.setText(animal.getDescricao());
 
         String caminhoImagem = animal.getFoto();
 
@@ -41,21 +41,18 @@ public class AnimalCardController {
         } else {
             System.out.println("Animal sem foto cadastrada");
         }
+
     }
 
     @FXML
-    private void handleTelaAdotar() {
-        abrirTela("AnimalInfo.fxml");
+    private void handleLogout() {
+        abrirTela("TelaAnimais.fxml");
     }
 
     private void abrirTela(String caminhoFXML) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifpr/" + caminhoFXML));
             Parent root = loader.load();
-
-            AnimalInfoController infoController = loader.getController();
-            infoController.setAnimalAdocao(animal);
-
             Stage stage = (Stage) btnAdotar.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();

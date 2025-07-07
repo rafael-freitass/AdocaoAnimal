@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -7,45 +8,63 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpr.controller.TelaSelecaoController">
+<AnchorPane prefHeight="600" prefWidth="900"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.edu.ifpr.controller.TelaSelecaoController"
+            style="-fx-background-color: #ffffff;">
    <children>
-      <VBox fx:id="rootVbox" alignment="CENTER" layoutY="-1.0" prefHeight="600.0" prefWidth="900.0" spacing="30.0">
-         <children>
-            <Label text="O que deseja fazer?">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="158.0" spacing="20.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#chamarTelaRegistroAnimal" text="Registrar Animal">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#chamarTelaRegistroVacina" text="Registrar Vacina">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#chamarTelaRegistroDoenca" text="Registrar Doença">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" text="Gerenciar Usuarios">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogout" text="Sair">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-         </children>
+      <VBox fx:id="rootVbox" alignment="TOP_CENTER" spacing="40" prefWidth="900" layoutY="40">
+         <padding><Insets top="40" left="50" right="50" bottom="40"/></padding>
+
+         <!-- Título -->
+         <Label text="O que deseja fazer?"
+                style="-fx-text-fill: #333333;">
+            <font><Font name="Arial Bold" size="28"/></font>
+         </Label>
+
+         <!-- Botões de seleção -->
+         <VBox alignment="CENTER" spacing="30">
+            <Button text="Registrar Animal"
+                    onAction="#chamarTelaRegistroAnimal"
+                    style="-fx-background-color: #4CAF50;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 8;
+                               -fx-font-size: 18;
+                               -fx-padding: 12 26;"/>
+
+            <Button text="Registrar Vacina"
+                    onAction="#chamarTelaRegistroVacina"
+                    style="-fx-background-color: #2196F3;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 8;
+                               -fx-font-size: 18;
+                               -fx-padding: 12 26;"/>
+
+            <Button text="Registrar Doença"
+                    onAction="#chamarTelaRegistroDoenca"
+                    style="-fx-background-color: #FF9800;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 8;
+                               -fx-font-size: 18;
+                               -fx-padding: 12 26;"/>
+
+            <Button text="Gerenciar Usuários"
+                    style="-fx-background-color: #9C27B0;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 8;
+                               -fx-font-size: 18;
+                               -fx-padding: 12 26;"/>
+         </VBox>
+
+         <!-- Sair -->
+         <Button text="Sair"
+                 onAction="#handleLogout"
+                 style="-fx-background-color: #cccccc;
+                           -fx-text-fill: black;
+                           -fx-background-radius: 6;
+                           -fx-font-size: 16;
+                           -fx-padding: 8 22;"/>
       </VBox>
    </children>
 </AnchorPane>

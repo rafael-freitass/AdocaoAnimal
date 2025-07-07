@@ -31,7 +31,7 @@ public class CadastroAnimalController {
     @FXML private ComboBox sexo;
     @FXML private ComboBox disponivel;
     @FXML private ComboBox castrado;
-    @FXML private TextField descricao;
+    @FXML private TextArea descricao;
     @FXML private Button btnCarregar;
     @FXML private ImageView imgPreview;
     @FXML private ListView<DoencaModel> listaDoencas;

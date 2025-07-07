@@ -1,184 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpr.controller.CadastroAnimalController">
+<?import java.lang.String?>
+<AnchorPane prefHeight="600" prefWidth="900"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.edu.ifpr.controller.CadastroAnimalController"
+            style="-fx-background-color: #ffffff;">
    <children>
-      <Text layoutX="280.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Animal">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Text>
-      <HBox layoutX="14.0" layoutY="14.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-         <children>
-            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout" prefHeight="10.0" prefWidth="80.0" text="Voltar">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
-         </children>
+
+      <!-- Título -->
+      <Label layoutX="0" layoutY="25" prefWidth="900"
+             text="Registro de Animal"
+             style="-fx-text-fill: #333333; -fx-alignment: center;">
+         <font><Font name="Arial Bold" size="32"/></font>
+      </Label>
+
+      <!-- Botão voltar -->
+      <Button fx:id="btnLogout"
+              layoutX="25" layoutY="25"
+              text="Voltar"
+              onAction="#handleLogout"
+              style="-fx-background-color: #cccccc;
+                       -fx-text-fill: black;
+                       -fx-background-radius: 6;
+                       -fx-padding: 6 18;"/>
+
+      <!-- Formulário principal -->
+      <HBox layoutX="25" layoutY="90" spacing="40" prefWidth="850">
+
+         <!-- Coluna 1: Campos principais -->
+         <VBox spacing="20">
+            <!-- Nome -->
+            <VBox spacing="6">
+               <Label text="Nome:" style="-fx-font-weight: bold;"/>
+               <TextField fx:id="nome" prefWidth="200" promptText="Nome"/>
+            </VBox>
+
+            <!-- Idade -->
+            <VBox spacing="6">
+               <Label text="Idade:" style="-fx-font-weight: bold;"/>
+               <TextField fx:id="idade" prefWidth="200" promptText="Idade"/>
+            </VBox>
+
+            <!-- Raça -->
+            <VBox spacing="6">
+               <Label text="Raça:" style="-fx-font-weight: bold;"/>
+               <TextField fx:id="raca" prefWidth="200" promptText="Raça"/>
+            </VBox>
+
+            <!-- Sexo -->
+            <VBox spacing="6">
+               <Label text="Sexo:" style="-fx-font-weight: bold;"/>
+               <ComboBox fx:id="sexo" prefWidth="200" promptText="Sexo">
+                  <items>
+                     <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="M"/>
+                        <String fx:value="F"/>
+                     </FXCollections>
+                  </items>
+               </ComboBox>
+            </VBox>
+
+            <!-- Disponível -->
+            <VBox spacing="6">
+               <Label text="Disponível:" style="-fx-font-weight: bold;"/>
+               <ComboBox fx:id="disponivel" prefWidth="200" promptText="Disponível?">
+                  <items>
+                     <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Sim"/>
+                        <String fx:value="Não"/>
+                     </FXCollections>
+                  </items>
+               </ComboBox>
+            </VBox>
+
+            <!-- Castrado -->
+            <VBox spacing="6">
+               <Label text="Castrado:" style="-fx-font-weight: bold;"/>
+               <ComboBox fx:id="castrado" prefWidth="200" promptText="Castrado?">
+                  <items>
+                     <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Sim"/>
+                        <String fx:value="Não"/>
+                     </FXCollections>
+                  </items>
+               </ComboBox>
+            </VBox>
+         </VBox>
+
+         <!-- Coluna 2: Descrição -->
+         <VBox spacing="10">
+            <Label text="Descrição:" style="-fx-font-weight: bold;"/>
+            <TextArea fx:id="descricao" prefWidth="230" prefHeight="200" wrapText="true"/>
+         </VBox>
+
+         <!-- Coluna 3: Listas -->
+         <VBox spacing="20">
+            <!-- Doenças -->
+            <VBox spacing="6">
+               <Label text="Doenças:" style="-fx-font-weight: bold;"/>
+               <ListView fx:id="listaDoencas" prefWidth="180" prefHeight="120"/>
+            </VBox>
+
+            <!-- Vacinas -->
+            <VBox spacing="6">
+               <Label text="Vacinas:" style="-fx-font-weight: bold;"/>
+               <ListView fx:id="listaVacinas" prefWidth="180" prefHeight="120"/>
+            </VBox>
+         </VBox>
+
+         <!-- Coluna 4: Foto -->
+         <VBox spacing="12" alignment="TOP_CENTER">
+            <Label text="Foto do Animal" style="-fx-font-weight: bold;"/>
+            <StackPane prefWidth="200" prefHeight="150"
+                       style="-fx-border-color: #dddddd;
+                                  -fx-border-radius: 8;
+                                  -fx-background-radius: 8;
+                                  -fx-background-color: #f9f9f9;">
+               <Label text="Pré‑visualização" opacity="0.4"/>
+               <ImageView fx:id="imgPreview"
+                          fitWidth="200" fitHeight="150"
+                          preserveRatio="true"/>
+            </StackPane>
+            <Button fx:id="btnCarregar"
+                    text="Carregar"
+                    onAction="#carregarImagem"
+                    style="-fx-background-color: #2196F3;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 6;
+                               -fx-padding: 6 18;"/>
+         </VBox>
       </HBox>
-      <HBox layoutX="14.0" layoutY="75.0" prefHeight="389.0" prefWidth="872.0" spacing="80.0">
-         <children>
-            <VBox prefHeight="280.0" prefWidth="149.0" spacing="25.0">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Nome:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="nome" prefHeight="0.0" prefWidth="149.0" promptText="Nome">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </TextField>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Idade:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="idade" promptText="Idade" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Raça:">
-                        <font>
-                           <Font name="System Bold" size="13.0" />
-                        </font>
-                     </Label>
-                        <TextField fx:id="raca" promptText="Raça" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Sexo:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="sexo" prefWidth="149.0" promptText="Sexo">
-                           <items>
-                              <FXCollections fx:factory="observableArrayList">
-                                 <String fx:value="M" />
-                                 <String fx:value="F" />
-                              </FXCollections>
-                           </items>
-                        </ComboBox>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Disponivel:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="disponivel" prefWidth="149.0" promptText="Disponível?">
-                           <items>
-                              <FXCollections fx:factory="observableArrayList">
-                                 <String fx:value="Sim" />
-                                 <String fx:value="Não" />
-                              </FXCollections>
-                           </items>
-                        </ComboBox>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Castrado:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="castrado" prefWidth="149.0" promptText="Castrado?">
-                           <items>
-                              <FXCollections fx:factory="observableArrayList">
-                                 <String fx:value="Sim" />
-                                 <String fx:value="Não" />
-                              </FXCollections>
-                           </items>
-                        </ComboBox>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="281.0" prefWidth="143.0">
-               <children>
-                  <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="148.0" text="Descrição:">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="descricao" prefHeight="115.0" prefWidth="153.0" />
-               </children>
-            </VBox>
-            <VBox prefHeight="281.0" prefWidth="199.0" spacing="20.0">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Doença:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ListView fx:id="listaDoencas" prefWidth="129.0" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Vacina:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ListView fx:id="listaVacinas" prefWidth="149.0" />
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="178.0" text="Foto do Animal">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <StackPane prefHeight="150.0" prefWidth="200.0">
-                     <children>
-                        <Label opacity="0.36" text="Foto do animal" />
-                        <ImageView fx:id="imgPreview" fitHeight="150.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </StackPane>
-                  <Button fx:id="btnCarregar" alignment="CENTER" mnemonicParsing="false" onAction="#carregarImagem" prefHeight="26.0" prefWidth="180.0" text="Carregar" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <Button layoutX="402.0" layoutY="533.0" mnemonicParsing="false" onAction="#registrarAnimal" text="Registrar Animal">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Button>
+
+      <!-- Botão registrar -->
+      <Button layoutX="375" layoutY="540"
+              text="Registrar Animal"
+              onAction="#registrarAnimal"
+              style="-fx-background-color: #4CAF50;
+                       -fx-text-fill: white;
+                       -fx-background-radius: 8;
+                       -fx-font-size: 18;
+                       -fx-padding: 10 26;"/>
    </children>
 </AnchorPane>

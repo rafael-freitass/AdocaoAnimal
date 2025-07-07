@@ -1,94 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpr.controller.RegisterController">
+<AnchorPane prefHeight="600" prefWidth="900"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.edu.ifpr.controller.RegisterController"
+            style="-fx-background-color: #ffffff;">
    <children>
-      <Label text="Equipe Cão">
-         <font>
-            <Font name="System Bold" size="32.0" />
-         </font>
-      </Label>
-      <Label text="Cadastro">
-         <font>
-            <Font name="System Bold" size="32.0" />
-         </font>
-         <VBox.margin>
-            <Insets top="50.0" />
-         </VBox.margin>
-      </Label>
-      <AnchorPane layoutX="270.0" prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <VBox alignment="CENTER" layoutX="293.0" prefHeight="200.0" prefWidth="314.0" spacing="10.0">
-               <children>
-                  <TextField fx:id="nome" focusTraversable="false" promptText="Nome Completo" styleClass="1">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="cpf" focusTraversable="false" promptText="CPF">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="email" focusTraversable="false" promptText="Email">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="username" focusTraversable="false" promptText="Usuario">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="password" focusTraversable="false" promptText="Senha">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#handleLoginScreen" prefHeight="32.0" prefWidth="159.0" text="Logar">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <HBox.margin>
-                              <Insets right="20.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="32.0" prefWidth="159.0" text="Registrar">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-         <VBox.margin>
-            <Insets top="50.0" />
-         </VBox.margin>
-      </AnchorPane>
+
+      <VBox alignment="TOP_CENTER" spacing="40" prefWidth="900">
+         <padding><Insets top="60" left="50" right="50" bottom="40"/></padding>
+
+         <!-- Cabeçalho -->
+         <Label text="🐾 Equipe Cão" style="-fx-text-fill: #333333;">
+            <font><Font name="Arial Bold" size="32"/></font>
+         </Label>
+
+         <Label text="Cadastro" style="-fx-text-fill: #333333;">
+            <font><Font name="Arial Bold" size="28"/></font>
+         </Label>
+
+         <!-- Caixa de cadastro -->
+         <VBox spacing="12" alignment="CENTER" maxWidth="420"
+               style="-fx-background-color: #f9f9f9;
+                         -fx-padding: 40;
+                         -fx-border-color: #dddddd;
+                         -fx-border-radius: 10;
+                         -fx-background-radius: 10;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0, 0, 2);">
+
+            <TextField fx:id="nome"       promptText="Nome completo" prefWidth="260"/>
+            <TextField fx:id="cpf"        promptText="CPF"           prefWidth="260"/>
+            <TextField fx:id="email"      promptText="E‑mail"        prefWidth="260"/>
+            <TextField fx:id="username"   promptText="Usuário"       prefWidth="260"/>
+            <PasswordField fx:id="password" promptText="Senha"      prefWidth="260"/>
+
+            <HBox spacing="20" alignment="CENTER">
+               <Button text="Já tenho conta" onAction="#handleLoginScreen"
+                       style="-fx-background-color: #cccccc;
+                                   -fx-text-fill: black;
+                                   -fx-background-radius: 6;
+                                   -fx-padding: 8 20;"/>
+               <Button text="Registrar" onAction="#cadastrarUsuario"
+                       style="-fx-background-color: #4CAF50;
+                                   -fx-text-fill: white;
+                                   -fx-background-radius: 6;
+                                   -fx-padding: 8 24;"/>
+            </HBox>
+         </VBox>
+      </VBox>
    </children>
-   <padding>
-      <Insets top="80.0" />
-   </padding>
-</VBox>
+</AnchorPane>

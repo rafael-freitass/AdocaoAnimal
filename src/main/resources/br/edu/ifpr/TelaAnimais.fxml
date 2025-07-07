@@ -3,24 +3,41 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <?import javafx.geometry.Insets?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpr.controller.TelaPrincipalController">
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.edu.ifpr.controller.TelaPrincipalController"
+            style="-fx-background-color: #ffffff;">
    <children>
-      <Label alignment="CENTER" layoutY="39.0" prefHeight="61.0" prefWidth="900.0" text="Equipe Cão" AnchorPane.topAnchor="39.0">
+      <!-- Título -->
+      <Label layoutX="0.0" layoutY="30.0" prefHeight="60.0" prefWidth="900.0"
+             text="🐾 Equipe Cão"
+             style="-fx-text-fill: #333333; -fx-alignment: center;">
          <font>
-            <Font name="System Bold" size="32.0" />
+            <Font name="Arial Bold" size="32.0" />
          </font>
       </Label>
-      <ScrollPane layoutX="25.0" layoutY="100.0" prefHeight="458.0" prefWidth="850.0" fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+
+      <!-- Botão sair -->
+      <Button fx:id="btnLogout"
+              layoutX="25.0" layoutY="30.0"
+              text="Sair"
+              onAction="#handleLogout"
+              style="-fx-background-color: #cccccc; -fx-text-fill: black; -fx-background-radius: 5; -fx-padding: 6 15;" />
+
+      <!-- Lista de animais -->
+      <ScrollPane layoutX="25.0" layoutY="100.0" prefHeight="470.0" prefWidth="850.0"
+                  fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                  style="-fx-background-color:transparent;">
          <content>
-            <FlowPane fx:id="paneAnimais" orientation="HORIZONTAL" hgap="20" vgap="20" prefWrapLength="800" maxWidth="Infinity">
-               <padding>
-                  <Insets top="20" right="20" bottom="20" left="20"/>
-               </padding>
-            </FlowPane>
+            <FlowPane fx:id="paneAnimais"
+                      orientation="HORIZONTAL"
+                      hgap="20" vgap="20"
+                      prefWrapLength="800"
+                      style="-fx-padding: 20;" />
          </content>
       </ScrollPane>
-      <Button fx:id="btnLogout" layoutX="25.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="26.0" prefWidth="70.0" text="Sair" />
    </children>
 </AnchorPane>
