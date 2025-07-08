@@ -50,6 +50,7 @@
                                -fx-padding: 12 26;"/>
 
             <Button text="Gerenciar Usuários"
+                    onAction="#chamarTelaGerenciarUsuario"
                     style="-fx-background-color: #9C27B0;
                                -fx-text-fill: white;
                                -fx-background-radius: 8;

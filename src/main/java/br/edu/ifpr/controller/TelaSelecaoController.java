@@ -15,23 +15,23 @@ public class TelaSelecaoController {
 
     @FXML VBox rootVbox;
 
-    @FXML
-    private void chamarTelaRegistroAnimal(){
+    @FXML private void chamarTelaRegistroAnimal(){
         abrirTela("TelaRegistrarAnimais.fxml");
     }
 
-    @FXML
-    private void chamarTelaRegistroVacina(){
+    @FXML private void chamarTelaRegistroVacina(){
         abrirTela("TelaVacina.fxml");
     }
 
-    @FXML
-    private void chamarTelaRegistroDoenca(){
+    @FXML private void chamarTelaRegistroDoenca(){
         abrirTela("TelaDoenca.fxml");
     }
 
-    @FXML
-    private void handleLogout(){
+    @FXML private void chamarTelaGerenciarUsuario(){
+        abrirTela("TelaGerenciarUsuarios.fxml");
+    }
+
+    @FXML private void handleLogout(){
         abrirTela("TelaLogin.fxml");
     }
 

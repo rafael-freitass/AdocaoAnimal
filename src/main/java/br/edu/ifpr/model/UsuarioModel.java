@@ -31,6 +31,11 @@ public class UsuarioModel {
     private Role role;
 
     // Getters e Setters
+
+    public int getID() {
+        return ID;
+    }
+
     public String getNome() {
         return nome;
     }
