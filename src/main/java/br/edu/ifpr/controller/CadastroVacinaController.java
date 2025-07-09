@@ -2,6 +2,7 @@ package br.edu.ifpr.controller;
 
 import br.edu.ifpr.dao.VacinaDAO;
 import br.edu.ifpr.model.VacinaModel;
+import br.edu.ifpr.utils.AlertUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,6 +31,7 @@ public class CadastroVacinaController {
         vacina.setNome(nomeVacina.getText());
 
         vacinaDAO.salvar(vacina);
+        AlertUtils.showSuccess("Vacina cadastrada com sucesso!");
         System.out.println("Vacina cadastrada com sucesso!");
     }
 

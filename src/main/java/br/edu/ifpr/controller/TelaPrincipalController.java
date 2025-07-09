@@ -3,6 +3,7 @@ package br.edu.ifpr.controller;
 import br.edu.ifpr.dao.AnimalDAO;
 import br.edu.ifpr.model.AnimalModel;
 import br.edu.ifpr.model.UsuarioModel;
+import br.edu.ifpr.utils.AlertUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,10 +37,9 @@ public class TelaPrincipalController {
 
                 AnimalCardController cardCtrl = loader.getController();
                 cardCtrl.setAnimal(animal);
-                cardCtrl.setUsuarioLogado(usuarioLogado);   // <<<<<< passa adiante
+                cardCtrl.setUsuarioLogado(usuarioLogado);
 
                 paneAnimais.getChildren().add(card);
-
             } catch (IOException e) {
                 e.printStackTrace();
             }

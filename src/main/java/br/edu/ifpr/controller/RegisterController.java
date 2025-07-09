@@ -3,6 +3,7 @@ package br.edu.ifpr.controller;
 import br.edu.ifpr.model.UsuarioModel;
 import br.edu.ifpr.model.enums.Role;
 import br.edu.ifpr.service.UsuarioService;
+import br.edu.ifpr.utils.AlertUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,25 +17,16 @@ public class RegisterController {
 
     private UsuarioService usuarioService = new UsuarioService();
 
-    @FXML
-    private TextField nome;
+    @FXML private TextField nome;
+    @FXML private TextField cpf;
+    @FXML private TextField email;
+    @FXML private TextField username;
+    @FXML private TextField password;
 
-    @FXML
-    private TextField cpf;
-
-    @FXML
-    private TextField email;
-
-    @FXML
-    private TextField username;
-
-    @FXML
-    private TextField password;
-
-    @FXML
-    private void handleLoginScreen() {
+    @FXML private void handleLoginScreen() {
         abrirTela("TelaLogin.fxml");
     }
+
     private void abrirTela(String caminhoFXML) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifpr/" + caminhoFXML));
@@ -47,8 +39,7 @@ public class RegisterController {
         }
     }
 
-    @FXML
-    public void cadastrarUsuario() {
+    @FXML public void cadastrarUsuario() {
     try {
         UsuarioModel usuario = new UsuarioModel();
         usuario.setRole(Role.CLIENTE);
@@ -59,12 +50,13 @@ public class RegisterController {
         usuario.setSenha(password.getText());
 
         usuarioService.cadastrar(usuario);
+        AlertUtils.showSuccess("Usuário registrado com sucesso!");
         System.out.println("Usuário cadastrado com sucesso!");
 
         abrirTela("TelaLogin.fxml");
 
     } catch (IllegalArgumentException e) {
-
+        AlertUtils.showError("Erro ao registrar usuário", e.getMessage());
         System.err.println("Erro de validação: " + e.getMessage());
 
     } catch (Exception e) {

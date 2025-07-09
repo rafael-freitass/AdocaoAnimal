@@ -6,6 +6,7 @@ import br.edu.ifpr.model.AnimalModel;
 import br.edu.ifpr.model.DoencaModel;
 import br.edu.ifpr.model.VacinaModel;
 import br.edu.ifpr.service.AnimalService;
+import br.edu.ifpr.utils.AlertUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -131,15 +132,16 @@ public class CadastroAnimalController {
 
             animalService.cadastrarAnimal(animal);
 
+            AlertUtils.showSuccess("Animal cadastrado com sucesso!");
             System.out.println("Animal cadastrado com sucesso!");
 
         } catch (IllegalArgumentException e) {
-
+            AlertUtils.showError("Erro de validação: ", e.getMessage());
             System.err.println("Erro de validação: " + e.getMessage());
 
         } catch (Exception e) {
-
-            System.err.println("Erro ao cadastrar usuário: " + e.getMessage());
+            AlertUtils.showError("Erro ao cadastrar animal: ", e.getMessage());
+            System.err.println("Erro ao cadastrar animal: " + e.getMessage());
             e.printStackTrace();
         }
     }

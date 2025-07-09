@@ -1,5 +1,6 @@
 package br.edu.ifpr.controller;
 
+import br.edu.ifpr.dao.AnimalDAO;
 import br.edu.ifpr.model.AnimalModel;
 import br.edu.ifpr.model.UsuarioModel;
 import javafx.fxml.FXML;
@@ -55,11 +56,15 @@ public class AnimalCardController {
 
     private void abrirTela(String caminhoFXML) {
         try {
+
+            AnimalDAO animalDAO = new AnimalDAO();
+            AnimalModel animalDetalhado = animalDAO.buscarPorIdComDetalhes(animal.getID());
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifpr/" + caminhoFXML));
             Parent root = loader.load();
 
             AnimalInfoController infoController = loader.getController();
-            infoController.setAnimalAdocao(animal);
+            infoController.setAnimalAdocao(animalDetalhado);
             infoController.setUsuarioLogado(usuarioLogado);
 
             Stage stage = (Stage) btnAdotar.getScene().getWindow();

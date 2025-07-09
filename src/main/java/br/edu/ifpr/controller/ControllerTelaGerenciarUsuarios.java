@@ -2,6 +2,7 @@ package br.edu.ifpr.controller;
 
 import br.edu.ifpr.dao.UsuarioDAO;
 import br.edu.ifpr.model.UsuarioModel;
+import br.edu.ifpr.utils.AlertUtils;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,18 +57,30 @@ public class ControllerTelaGerenciarUsuarios {
     }
 
     @FXML private void handleExcluir() {
-        UsuarioModel u = tableUsuarios.getSelectionModel().getSelectedItem();
-        if (u != null) {
-            usuarioDAO.excluir(u);
-            listaUsuarios.remove(u);
+        try {
+            UsuarioModel u = tableUsuarios.getSelectionModel().getSelectedItem();
+            if (u != null) {
+                usuarioDAO.excluir(u);
+                listaUsuarios.remove(u);
+            }
+            AlertUtils.showSuccess("Usuário excluido com sucesso!");
+        }
+        catch (IllegalArgumentException e) {
+            AlertUtils.showError("Falha ao excluir o usuario!",  e.getMessage());
         }
     }
 
     @FXML private void handleTornarAdmin() {
-        UsuarioModel u = tableUsuarios.getSelectionModel().getSelectedItem();
-        if (u != null && !u.getRole().name().equals("ADMIN")) {
-            usuarioDAO.tornarAdmin(u);
-            tableUsuarios.refresh();   // reflete a mudança no papel
+        try {
+            UsuarioModel u = tableUsuarios.getSelectionModel().getSelectedItem();
+            if (u != null && !u.getRole().name().equals("FUNCIONARIO")) {
+                usuarioDAO.tornarAdmin(u);
+                tableUsuarios.refresh();
+            }
+            AlertUtils.showSuccess("O usuário agora é um administrador.");
+        }
+        catch (Exception e){
+            AlertUtils.showError("Erro ao promover usuário", e.getMessage());
         }
     }
 

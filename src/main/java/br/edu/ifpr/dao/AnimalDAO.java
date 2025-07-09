@@ -83,5 +83,22 @@ public class AnimalDAO {
         }
     }
 
+    public AnimalModel buscarPorIdComDetalhes(int id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            AnimalModel a = em.createQuery(
+                            "SELECT a FROM AnimalModel a LEFT JOIN FETCH a.doenca WHERE a.ID = :id",
+                            AnimalModel.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+
+            // carrega vacinas antes de fechar a sessão
+            a.getVacina().size();
+            return a;
+        } finally {
+            em.close();
+        }
+    }
+
 
 }

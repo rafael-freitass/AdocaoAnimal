@@ -2,6 +2,7 @@ package br.edu.ifpr.controller;
 
 import br.edu.ifpr.dao.DoencaDAO;
 import br.edu.ifpr.model.DoencaModel;
+import br.edu.ifpr.utils.AlertUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,6 +31,7 @@ public class CadastroDoencaController {
         doenca.setNome(nomeDoenca.getText());
 
         doencaDAO.salvar(doenca);
+        AlertUtils.showSuccess("Doença cadastrada com sucesso!");
         System.out.println("Doença cadastrada com sucesso!");
     }
 
