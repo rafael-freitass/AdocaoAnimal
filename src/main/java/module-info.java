@@ -5,6 +5,7 @@ module br.edu.ifpr {
     requires org.hibernate.orm.core;
     requires java.desktop;
     requires jdk.jfr;
+    requires org.slf4j;
 
     opens br.edu.ifpr.model to jakarta.persistence, org.hibernate.orm.core;
 

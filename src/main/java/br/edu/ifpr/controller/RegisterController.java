@@ -10,20 +10,28 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 public class RegisterController {
-
+    private final Logger log = LoggerFactory.getLogger(RegisterController.class);
     private UsuarioService usuarioService = new UsuarioService();
 
-    @FXML private TextField nome;
-    @FXML private TextField cpf;
-    @FXML private TextField email;
-    @FXML private TextField username;
-    @FXML private TextField password;
+    @FXML
+    private TextField nome;
+    @FXML
+    private TextField cpf;
+    @FXML
+    private TextField email;
+    @FXML
+    private TextField username;
+    @FXML
+    private TextField password;
 
-    @FXML private void handleLoginScreen() {
+    @FXML
+    private void handleLoginScreen() {
         abrirTela("TelaLogin.fxml");
     }
 
@@ -35,34 +43,32 @@ public class RegisterController {
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Erro ao abrir a tela: {}", e.getMessage(), e);
         }
     }
 
-    @FXML public void cadastrarUsuario() {
-    try {
-        UsuarioModel usuario = new UsuarioModel();
-        usuario.setRole(Role.CLIENTE);
-        usuario.setNome(nome.getText());
-        usuario.setCpf(cpf.getText());
-        usuario.setEmail(email.getText());
-        usuario.setUsername(username.getText());
-        usuario.setSenha(password.getText());
+    @FXML
+    public void cadastrarUsuario() {
+        try {
+            UsuarioModel usuario = new UsuarioModel();
+            usuario.setRole(Role.CLIENTE);
+            usuario.setNome(nome.getText());
+            usuario.setCpf(cpf.getText());
+            usuario.setEmail(email.getText());
+            usuario.setUsername(username.getText());
+            usuario.setSenha(password.getText());
 
-        usuarioService.cadastrar(usuario);
-        AlertUtils.showSuccess("Usuário registrado com sucesso!");
-        System.out.println("Usuário cadastrado com sucesso!");
+            usuarioService.cadastrar(usuario);
+            AlertUtils.showSuccess("Usuário registrado com sucesso!");
+            log.info("Usuário cadastrado com sucesso!");
 
-        abrirTela("TelaLogin.fxml");
+            abrirTela("TelaLogin.fxml");
 
-    } catch (IllegalArgumentException e) {
-        AlertUtils.showError("Erro ao registrar usuário", e.getMessage());
-        System.err.println("Erro de validação: " + e.getMessage());
-
-    } catch (Exception e) {
-
-        System.err.println("Erro ao cadastrar usuário: " + e.getMessage());
-        e.printStackTrace();
-    }
+        } catch (IllegalArgumentException e) {
+            AlertUtils.showError("Erro ao registrar usuário", e.getMessage());
+            log.error("Erro de validação: {}", e.getMessage(), e);
+        } catch (Exception e) {
+            log.error("Erro ao cadastrar usuário: {}", e.getMessage(), e);
+        }
     }
 }

@@ -33,6 +33,15 @@ public class UsuarioService {
             throw new IllegalArgumentException("A senha deve conter pelo menos 6 caracteres.");
         }
 
+        if (usuarioDAO.buscarPorCpf(usuario.getCpf()) != null) {
+            throw new IllegalArgumentException("Já existe um usuário cadastrado com esse CPF.");
+        }
+
+        if (usuarioDAO.buscarPorEmail(usuario.getEmail()) != null) {
+            throw new IllegalArgumentException("Já existe um usuário cadastrado com esse email.");
+        }
+
+
         usuarioDAO.save(usuario);
 
     }

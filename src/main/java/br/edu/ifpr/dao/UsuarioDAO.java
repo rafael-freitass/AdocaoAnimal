@@ -22,6 +22,24 @@ public class UsuarioDAO extends JPAUtil<UsuarioModel> {
         }
     }
 
+    public UsuarioModel buscarPorCpf(String cpf) {
+        EntityManager em = JPAUtil.getEntityManager();
+        return em.createQuery("SELECT u FROM UsuarioModel u WHERE u.cpf = :cpf", UsuarioModel.class)
+                .setParameter("cpf", cpf)
+                .getResultStream()
+                .findFirst()
+                .orElse(null);
+    }
+
+    public UsuarioModel buscarPorEmail(String email) {
+        EntityManager em = JPAUtil.getEntityManager();
+        return em.createQuery("SELECT u FROM UsuarioModel u WHERE u.email = :email", UsuarioModel.class)
+                .setParameter("email", email)
+                .getResultStream()
+                .findFirst()
+                .orElse(null);
+    }
+
     public void excluir(UsuarioModel usuario) {
         executarTransacao(em -> {
             UsuarioModel ref = em.merge(usuario);
